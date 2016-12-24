@@ -22,6 +22,7 @@ There are two main problems to address here:
 1.	You can now show Harakat such as ًٌٍَُِ~ّْ using the plugin. Also, you have option to remove the Harakat realtime by setting the plugin to ignore the Harakat by using the ShowHarakat() HideHarakat() Methods. Please note that not all fonts support the Harakat well. Arial font and Arabic Typesetting font were tested and words well. The default is to show the Harakat.
 2.	You can now use hindu numbers instead of the default of the font if needed. (٠	١	٢	٣	٤	٥	٦	٧	٨	٩) Use the UseHinduNumbers() and UseDeafultNumbers() method to switch your settings. The default value is not to use hindu numbers.
 3.	4 Persian characters have been added (3.0): چژ گپ
+4. Multiple lines are supported. However, you have to supply the breaklines to the Fix method yourself.
 
 I hope you'll find this asset useful and enjoy using it!
 
