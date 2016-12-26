@@ -1,6 +1,9 @@
 # Arabic Support For Unity
 This plugin allows you to use accurate and correct Arabic text in your game or 3D application. Supports Tashkeel and Hindu numbers. Supports 4 Persian Characters.
+
 You can find it in the Unity Asset Store here: https://www.assetstore.unity3d.com/en/#!/content/2674
+
+You only need to use ArabicSupport.cs file in your project. The rest of the files here are just for demonstration.
 
 Assalamu Alaikum! (Peace upon you all!)
 This asset will enable you to use Arabic Words in your game with no problems. 
