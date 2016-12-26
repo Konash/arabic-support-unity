@@ -12,6 +12,7 @@ There are two main problems to address here:
 1.	You'll need to use a font that got Arabic letters in it.
 2.	You'll need to modify the text attribute through script. This does not fix the problem if you write directly in a text field.
 3.	The script is written in C#.
+4.	The code is a little messy so please excuse me.
 
 # Steps
 1.	To use the Unity Arabic Support asset inside a script, use: "using ArabicSupport;"
