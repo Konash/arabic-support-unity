@@ -1,9 +1,7 @@
-# Arabic Support For Unity
+# Arabic Letters Support For Unity
 This plugin allows you to use accurate and correct Arabic text in your game or 3D application. Supports Tashkeel and Hindu numbers. Supports 4 Persian Characters.
 
 You can find it in the Unity Asset Store here: https://www.assetstore.unity3d.com/en/#!/content/2674
-
-You only need to use ArabicSupport.cs file in your project. The rest of the files here are just for demonstration.
 
 Assalamu Alaikum! (Peace upon you all!)
 This asset will enable you to use Arabic Words in your game with no problems. 
@@ -11,6 +9,21 @@ There are two main problems to address here:
 1.	Arabic Letters orders. It's like reading "Hello" as "olleH".
 السلام  is displayed as:  م ا ل س ل ا
 2.	Arabic Letters connectivity. As seen here: “السلام  is displayed as:  م ا ل س ل ا” the letters are no disconnected.
+
+# Building The Project
+You only need to use ArabicSupport.cs file in your project. So there is no real need for building. The rest of the files there are just for demonstration in a Unity Project in expectation of developers wanting to demo the extra features they add to the plugin.
+
+The project should work on most unity versions for now until we start adding features that are available only in later unity versions.
+
+# Testing The Project
+Usually the project is updated once a flaw is discovered, or something new needs to be added.
+In the scenes folder there is "Test Cases.unity" file that includes all previous tested words. 
+## Follow the following steps:
+1. Make changes.
+2. Go and see the test case scene and check if something broke. (Sadly you'll have to know basic Arabic writing to know this)
+3. Add new words to the scene that you found that broke so others can also test it.
+
+You can add your own test cases scene if it makes sense to you.
 
 # Notes
 1.	You'll need to use a font that got Arabic letters in it.
@@ -28,6 +41,12 @@ There are two main problems to address here:
 2.	You can now use hindu numbers instead of the default of the font if needed. (٠	١	٢	٣	٤	٥	٦	٧	٨	٩) Use the UseHinduNumbers() and UseDeafultNumbers() method to switch your settings. The default value is not to use hindu numbers.
 3.	4 Persian characters have been added (3.0): چژ گپ
 4. Multiple lines are supported. However, you have to supply the breaklines to the Fix method yourself.
+
+# Issues
+## The text is not showing on your build?
+1. Click on the font you are using in the project field.
+2. In the inspector, find the "Character" field.
+3. Change it from dynamic to unicode.
 
 I hope you'll find this asset useful and enjoy using it!
 
