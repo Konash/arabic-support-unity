@@ -8,7 +8,8 @@ public class ArabicSupportTester : MonoBehaviour {
 
 	void Start()
 	{
-		foreach (var expectedText in ExpectedTexts)
+        ExpectedTexts = FindObjectsOfType(typeof(ExpectedFixedText)) as ExpectedFixedText[];
+        foreach (var expectedText in ExpectedTexts)
 		{
 			expectedText.Fix();
 			Assert.AreEqual(expectedText.Expected, expectedText.Fixed);
