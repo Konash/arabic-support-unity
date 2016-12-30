@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using ArabicSupport;
 
-//[ExecuteInEditMode] 
+//[ExecuteInEditMode]
 
 public class SetArabic3dText : MonoBehaviour {
 
@@ -17,13 +17,12 @@ public class SetArabic3dText : MonoBehaviour {
 		string s = ArabicFixer.Fix(text, ShowTashkeel, UseHinduNumbers);
 
 
-		
 		gameObject.GetComponent<TextMesh>().text = s;
 		Debug.Log(s);
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-	
+
 	}
 }

@@ -14,9 +14,9 @@ public class SetArabic3dTextHindu : MonoBehaviour {
 	void Start () {
 		gameObject.GetComponent<TextMesh>().text = ArabicFixer.Fix(text, ShowTashkeel, UseHinduNumbers);
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-	
+
 	}
 }

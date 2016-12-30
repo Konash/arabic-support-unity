@@ -17,9 +17,9 @@ public class SetArabicText : MonoBehaviour {
 		Debug.Log(ArabicSupport.ArabicFixer.Fix("نص عربي على يونيتي، أهلا وسهلا", ShowTashkeel, UseHinduNumbers));
 
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-	
+
 	}
 }
