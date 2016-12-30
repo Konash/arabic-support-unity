@@ -1,4 +1,0 @@
-sceneSetups:
-- path: Assets/ArabicSupport/Scenes/Test Cases.unity
-  isLoaded: 1
-  isActive: 1
