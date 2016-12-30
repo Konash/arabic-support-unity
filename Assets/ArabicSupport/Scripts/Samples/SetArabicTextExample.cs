@@ -3,7 +3,8 @@ using System.Collections;
 using ArabicSupport;
 
 public class SetArabicTextExample : MonoBehaviour {
-	
+
+	[TextArea]
 	public string text;
 	
 	// Use this for initialization

@@ -5,7 +5,8 @@ using ArabicSupport;
 //[ExecuteInEditMode] 
 
 public class SetArabic3dText : MonoBehaviour {
-	
+
+	[TextArea]
 	public string text;
 	
 	// Use this for initialization
