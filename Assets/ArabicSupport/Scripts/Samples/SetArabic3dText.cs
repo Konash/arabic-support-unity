@@ -8,10 +8,14 @@ public class SetArabic3dText : MonoBehaviour {
 
 	[TextArea]
 	public string text;
-	
+
+	public bool ShowTashkeel = false;
+	public bool UseHinduNumbers = true;
+
 	// Use this for initialization
 	void Start () {
-		string s =ArabicFixer.Fix(text, true);
+		string s = ArabicFixer.Fix(text, ShowTashkeel, UseHinduNumbers);
+
 
 		
 		gameObject.GetComponent<TextMesh>().text = s;
