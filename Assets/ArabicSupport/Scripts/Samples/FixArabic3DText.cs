@@ -15,7 +15,7 @@ public class FixArabic3DText : MonoBehaviour {
 
         gameObject.GetComponent<TextMesh>().text = fixedText;
 
-        Debug.Log(fixedFixed);
+		Debug.Log(fixedText);
     }
 
 }
