@@ -3,8 +3,14 @@ This plugin allows you to use accurate and correct Arabic text in your game or 3
 
 You can find it in the Unity Asset Store here: https://www.assetstore.unity3d.com/en/#!/content/2674
 
+Also, check out [UPersian](https://github.com/ElectroGryphon/EGGA/tree/master/UPersian). It uses this plugin to create these GUI items: 
+1. RTL Text 
+2. RTL Input field
+3. RTL Buton
+4. RTL Checkbox
+
 Assalamu Alaikum! (Peace upon you all!)
-This asset will enable you to use Arabic Words in your game with no problems. 
+This asset will enable you to use Arabic Words in your game. 
 There are two main problems to address here:
 1.	Arabic Letters orders. It's like reading "Hello" as "olleH".
 السلام  is displayed as:  م ا ل س ل ا
