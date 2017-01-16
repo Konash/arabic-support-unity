@@ -38,6 +38,12 @@ public class ArabicSupportTool : EditorWindow
 
         GUILayout.Label("Output (Fixed)", EditorStyles.boldLabel);
         fixedText = EditorGUILayout.TextArea(fixedText);
+        if (GUILayout.Button("Copy")) {
+          var tempTextEditor = new TextEditor();
+          tempTextEditor.text = fixedText;
+          tempTextEditor.SelectAll();
+          tempTextEditor.Copy();
+        }
 
     }
 
