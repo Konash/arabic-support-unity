@@ -127,7 +127,7 @@ internal enum IsolatedArabicLetters
 	AlefHamza = 0xFE83,
 	WawHamza = 0xFE85,
 	AlefMaksoor = 0xFE87,
-	AlefMaksora = 0xFEEF,
+	AlefMaksora = 0xFBFC,
 	HamzaNabera = 0xFE89,
 	Ba = 0xFE8F,
 	Ta = 0xFE95,
@@ -485,7 +485,14 @@ internal class ArabicFixerTool
 				else if (IsLeadingLetter(lettersOrigin, i))
 					lettersFinal[i] = (char)(lettersOrigin[i] + 2);
 			}
-			test += Convert.ToString((int)lettersOrigin[i], 16) + " ";
+
+            //string strOut = String.Format(@"\x{0:x4}", (ushort)lettersOrigin[i]);
+            //UnityEngine.Debug.Log(strOut);
+
+            //strOut = String.Format(@"\x{0:x4}", (ushort)lettersFinal[i]);
+            //UnityEngine.Debug.Log(strOut);
+
+            test += Convert.ToString((int)lettersOrigin[i], 16) + " ";
 			if (skip)
 				i++;
 			
@@ -635,17 +642,18 @@ internal class ArabicFixerTool
 		bool isUpper = char.IsUpper(ch);
 		bool isSymbol = char.IsSymbol(ch);
 		bool isPersianCharacter = ch == (char)0xFB56 || ch == (char)0xFB7A || ch == (char)0xFB8A || ch == (char)0xFB92 || ch == (char)0xFB8E;
-		bool isPresentationFormB = (ch <= (char)0xFEFF && ch >= (char)0xFE70);
-		bool isAcceptableCharacter = isPresentationFormB || isPersianCharacter;
-		
-		
-		return isPunctuation ||
-			isNumber ||
-				isLower ||
-				isUpper ||
-				isSymbol ||
-				!isAcceptableCharacter ||
-				ch == 'a' || ch == '>' || ch == '<' || ch == (char)0x061B;
+        bool isPresentationFormB = (ch <= (char)0xFEFF && ch >= (char)0xFE70);
+        bool isAcceptableCharacter = isPresentationFormB || isPersianCharacter || ch == (char)0xFBFC;
+
+
+
+        return isPunctuation ||
+            isNumber ||
+                isLower ||
+                isUpper ||
+                isSymbol ||
+                !isAcceptableCharacter ||
+                ch == 'a' || ch == '>' || ch == '<' || ch == (char)0x061B;
 		
 		//            return char.IsPunctuation(ch) || char.IsNumber(ch) || ch == 'a' || ch == '>' || ch == '<' ||
 		//                    char.IsLower(ch) || char.IsUpper(ch) || ch == (char)0x061B || char.IsSymbol(ch)
@@ -681,7 +689,7 @@ internal class ArabicFixerTool
 				|| letters[index - 1] == (int)IsolatedArabicLetters.Ra2 
 				|| letters[index - 1] == (int)IsolatedArabicLetters.Zeen 
 				|| letters[index - 1] == (int)IsolatedArabicLetters.PersianZe
-				|| letters[index - 1] == (int)IsolatedArabicLetters.AlefMaksora 
+				//|| letters[index - 1] == (int)IsolatedArabicLetters.AlefMaksora 
 				|| letters[index - 1] == (int)IsolatedArabicLetters.Waw
 				|| letters[index - 1] == (int)IsolatedArabicLetters.AlefMad 
 				|| letters[index - 1] == (int)IsolatedArabicLetters.AlefHamza
@@ -765,7 +773,7 @@ internal class ArabicFixerTool
 				&& letters[index - 1] != (int)IsolatedArabicLetters.Ra2 
 				&& letters[index - 1] != (int)IsolatedArabicLetters.Zeen 
 				&& letters[index - 1] != (int)IsolatedArabicLetters.PersianZe
-				&& letters[index - 1] != (int)IsolatedArabicLetters.AlefMaksora 
+				//&& letters[index - 1] != (int)IsolatedArabicLetters.AlefMaksora 
 				&& letters[index - 1] != (int)IsolatedArabicLetters.Waw
 				&& letters[index - 1] != (int)IsolatedArabicLetters.Alef 
 				&& letters[index - 1] != (int)IsolatedArabicLetters.AlefMad
@@ -834,7 +842,7 @@ internal class ArabicFixerTool
 				&& letters[index] != (int)IsolatedArabicLetters.Ra2
 				&& letters[index] != (int)IsolatedArabicLetters.Zeen 
 				&& letters[index] != (int)IsolatedArabicLetters.PersianZe 
-				&& letters[index] != (int)IsolatedArabicLetters.AlefMaksora
+				//&& letters[index] != (int)IsolatedArabicLetters.AlefMaksora
 				&& letters[index] != (int)IsolatedArabicLetters.Waw 
 				&& letters[index] != (int)IsolatedArabicLetters.AlefMad
 				&& letters[index] != (int)IsolatedArabicLetters.AlefHamza 
@@ -849,7 +857,7 @@ internal class ArabicFixerTool
 				&& letters[index - 1] != (int)IsolatedArabicLetters.Ra2
 				&& letters[index - 1] != (int)IsolatedArabicLetters.Zeen 
 				&& letters[index - 1] != (int)IsolatedArabicLetters.PersianZe 
-				&& letters[index - 1] != (int)IsolatedArabicLetters.AlefMaksora
+				//&& letters[index - 1] != (int)IsolatedArabicLetters.AlefMaksora
 				&& letters[index - 1] != (int)IsolatedArabicLetters.Waw 
 				&& letters[index - 1] != (int)IsolatedArabicLetters.AlefMad
 				&& letters[index - 1] != (int)IsolatedArabicLetters.AlefHamza 
