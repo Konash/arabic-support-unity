@@ -348,35 +348,85 @@ internal class ArabicFixerTool
 	{
 		tashkeelLocation = new List<TashkeelLocation>();
 		char[] letters = str.ToCharArray();
-		for (int i = 0; i < letters.Length; i++)
-		{
-			if(letters[i] == (char)0x064B) // Tanween Fatha
-				tashkeelLocation.Add(new TashkeelLocation((char)0x064B, i));
-			else if(letters[i] == (char)0x064C) // Shaddah
-				tashkeelLocation.Add(new TashkeelLocation((char)0x064C, i));
-			else if(letters[i] == (char)0x064D) // Shaddah
-				tashkeelLocation.Add(new TashkeelLocation((char)0x064D, i));
-			else if(letters[i] == (char)0x064E) // Shaddah
-				tashkeelLocation.Add(new TashkeelLocation((char)0x064E, i));
-			else if(letters[i] == (char)0x064F) // Shaddah
-				tashkeelLocation.Add(new TashkeelLocation((char)0x064F, i));
-			else if(letters[i] == (char)0x0650) // Shaddah
-				tashkeelLocation.Add(new TashkeelLocation((char)0x0650, i));
-			else if(letters[i] == (char)0x0651) // Shaddah
-				tashkeelLocation.Add(new TashkeelLocation((char)0x0651, i));
-			else if(letters[i] == (char)0x0652) // Shaddah
-				tashkeelLocation.Add(new TashkeelLocation((char)0x0652, i));
-			else if(letters[i] == (char)0x0653) // Shaddah
-				tashkeelLocation.Add(new TashkeelLocation((char)0x0653, i));
-			
-			
-			
+
+		int index = 0;
+		for (int i = 0; i < letters.Length; i++) {
+			if (letters [i] == (char)0x064B) { // Tanween Fatha
+				tashkeelLocation.Add (new TashkeelLocation ((char)0x064B, i));
+				index++;
+			} else if (letters [i] == (char)0x064C) { // DAMMATAN
+				tashkeelLocation.Add (new TashkeelLocation ((char)0x064C, i));
+				index++;
+			} else if (letters [i] == (char)0x064D){ // KASRATAN
+				tashkeelLocation.Add (new TashkeelLocation ((char)0x064D, i));
+				index++;
+			}else if (letters [i] == (char)0x064E) { // FATHA
+				if(index > 0)
+				{
+					if(tashkeelLocation[index-1].tashkeel == (char)0x0651 ) // SHADDA
+					{
+						tashkeelLocation [index - 1].tashkeel = (char)0xFC60; // Shadda With Fatha
+						continue;
+					}
+				}
+
+				tashkeelLocation.Add (new TashkeelLocation ((char)0x064E, i));
+				index++;
+			} else if (letters [i] == (char)0x064F) { // DAMMA
+				if (index > 0) {
+					if (tashkeelLocation [index - 1].tashkeel == (char)0x0651) { // SHADDA
+						tashkeelLocation [index - 1].tashkeel = (char)0xFC61; // Shadda With DAMMA
+						continue;
+					}
+				}
+				tashkeelLocation.Add (new TashkeelLocation ((char)0x064F, i));
+				index++;
+			} else if (letters [i] == (char)0x0650) { // KASRA
+				if (index > 0) {
+					if (tashkeelLocation [index - 1].tashkeel == (char)0x0651) { // SHADDA
+						tashkeelLocation [index - 1].tashkeel = (char)0xFC62; // Shadda With KASRA
+						continue;
+					}
+				}
+				tashkeelLocation.Add (new TashkeelLocation ((char)0x0650, i));
+				index++;
+			} else if (letters [i] == (char)0x0651) { // SHADDA
+				if(index > 0)
+				{
+					if(tashkeelLocation[index-1].tashkeel == (char)0x064E ) // FATHA
+					{
+						tashkeelLocation [index - 1].tashkeel = (char)0xFC60; // Shadda With Fatha
+						continue;
+					}
+
+					if(tashkeelLocation[index-1].tashkeel == (char)0x064F ) // DAMMA
+					{
+						tashkeelLocation [index - 1].tashkeel = (char)0xFC61; // Shadda With DAMMA
+						continue;
+					}
+
+					if(tashkeelLocation[index-1].tashkeel == (char)0x0650 ) // KASRA
+					{
+						tashkeelLocation [index - 1].tashkeel = (char)0xFC62; // Shadda With KASRA
+						continue;
+					}
+				}
+
+				tashkeelLocation.Add (new TashkeelLocation ((char)0x0651, i));
+				index++;
+			} else if (letters [i] == (char)0x0652) { // SUKUN
+				tashkeelLocation.Add (new TashkeelLocation ((char)0x0652, i));
+				index++;
+			} else if (letters [i] == (char)0x0653) { // MADDAH ABOVE
+				tashkeelLocation.Add (new TashkeelLocation ((char)0x0653, i));
+				index++;
+			}
 		}
 		
 		string[] split = str.Split(new char[]{(char)0x064B,(char)0x064C,(char)0x064D,
 			(char)0x064E,(char)0x064F,(char)0x0650,
-			(char)0x0651,(char)0x0652,(char)0x0653,});
 		
+			(char)0x0651,(char)0x0652,(char)0x0653,(char)0xFC60,(char)0xFC61,(char)0xFC62});
 		str = "";
 		
 		foreach(string s in split)
