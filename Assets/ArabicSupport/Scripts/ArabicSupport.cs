@@ -741,9 +741,10 @@ internal class ArabicFixerTool
 				|| letters[index - 1] == (int)IsolatedArabicLetters.PersianZe
 				//|| letters[index - 1] == (int)IsolatedArabicLetters.AlefMaksora 
 				|| letters[index - 1] == (int)IsolatedArabicLetters.Waw
-				|| letters[index - 1] == (int)IsolatedArabicLetters.AlefMad 
-				|| letters[index - 1] == (int)IsolatedArabicLetters.AlefHamza
-				|| letters[index - 1] == (int)IsolatedArabicLetters.AlefMaksoor 
+				|| letters[index - 1] == (int)IsolatedArabicLetters.AlefMad
+                || letters[index - 1] == (int)IsolatedArabicLetters.AlefHamza
+                || letters[index - 1] == (int)IsolatedArabicLetters.Hamza
+                || letters[index - 1] == (int)IsolatedArabicLetters.AlefMaksoor 
 				|| letters[index - 1] == (int)IsolatedArabicLetters.WawHamza;
 
 		bool lettersThatCannotBeALeadingLetter = letters[index] != ' ' 
