@@ -836,6 +836,7 @@ internal class ArabicFixerTool
 
 
 				&& !char.IsPunctuation(letters[index - 1]) 
+                && !char.IsSymbol(letters[index-1])
 				&& letters[index - 1] != '>' 
 				&& letters[index - 1] != '<';
 				
