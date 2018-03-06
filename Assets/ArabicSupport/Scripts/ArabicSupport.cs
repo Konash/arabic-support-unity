@@ -1,12 +1,42 @@
-#region File Description
 //-----------------------------------------------------------------------------
 /// <summary>
-/// This is an Open Source File Created by: Abdullah Konash (http://abdullahkonash.com/) Twitter: @konash
+/// This is an Open Source File Created by: Abdullah Konash. Twitter: @konash
 /// This File allow the users to use arabic text in XNA and Unity platform.
 /// It flips the characters and replace them with the appropriate ones to connect the letters in the correct way.
+/// 
+/// The project is available on GitHub here: https://github.com/Konash/arabic-support-unity
+/// Unity Asset Store link: https://www.assetstore.unity3d.com/en/#!/content/2674
+/// Please help in improving the plugin. 
+/// 
+/// I would love to see the work you use this plugin for. Send me a copy at: abdullah.konash[at]gmail[dot]com
 /// </summary>
+/// 
+/// <license>
+/// MIT License
+/// 
+/// Copyright(c) 2018
+/// Abdullah Konash
+/// 
+/// Permission is hereby granted, free of charge, to any person obtaining a copy
+/// of this software and associated documentation files (the "Software"), to deal
+/// /// in the Software without restriction, including without limitation the rights
+/// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+/// copies of the Software, and to permit persons to whom the Software is
+/// furnished to do so, subject to the following conditions:
+/// 
+/// The above copyright notice and this permission notice shall be included in all
+/// copies or substantial portions of the Software.
+/// 
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+/// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+/// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+/// SOFTWARE.
+/// </license>
+
 //-----------------------------------------------------------------------------
-#endregion
 
 
 #region Using Statements
@@ -112,8 +142,15 @@ namespace ArabicSupport
 			}
 			
 		}
-		
-	}
+
+        public static string Fix(string str, bool showTashkeel, bool combineTashkeel, bool useHinduNumbers)
+        {
+            ArabicFixerTool.combineTashkeel = combineTashkeel;
+            return Fix(str, showTashkeel, useHinduNumbers);
+        }
+
+
+    }
 	
 }
 
@@ -341,7 +378,8 @@ internal class TashkeelLocation
 internal class ArabicFixerTool
 {
 	internal static bool showTashkeel = true;
-	internal static bool useHinduNumbers = false;
+    internal static bool combineTashkeel = true;
+    internal static bool useHinduNumbers = false;
 	
 	
 	internal static string RemoveTashkeel(string str, out List<TashkeelLocation> tashkeelLocation)
@@ -354,16 +392,19 @@ internal class ArabicFixerTool
 			if (letters [i] == (char)0x064B) { // Tanween Fatha
 				tashkeelLocation.Add (new TashkeelLocation ((char)0x064B, i));
 				index++;
-			} else if (letters [i] == (char)0x064C) { // DAMMATAN
+			}
+            else if (letters [i] == (char)0x064C) { // Tanween Damma
 				tashkeelLocation.Add (new TashkeelLocation ((char)0x064C, i));
 				index++;
-			} else if (letters [i] == (char)0x064D){ // KASRATAN
+			}
+            else if (letters [i] == (char)0x064D){ // Tanween Kasra
 				tashkeelLocation.Add (new TashkeelLocation ((char)0x064D, i));
 				index++;
-			}else if (letters [i] == (char)0x064E) { // FATHA
-				if(index > 0)
+			}
+            else if (letters [i] == (char)0x064E) { // Fatha
+				if(index > 0 && combineTashkeel)
 				{
-					if(tashkeelLocation[index-1].tashkeel == (char)0x0651 ) // SHADDA
+					if(tashkeelLocation[index-1].tashkeel == (char)0x0651 ) // Shadda
 					{
 						tashkeelLocation [index - 1].tashkeel = (char)0xFC60; // Shadda With Fatha
 						continue;
@@ -372,8 +413,9 @@ internal class ArabicFixerTool
 
 				tashkeelLocation.Add (new TashkeelLocation ((char)0x064E, i));
 				index++;
-			} else if (letters [i] == (char)0x064F) { // DAMMA
-				if (index > 0) {
+			}
+            else if (letters [i] == (char)0x064F) { // DAMMA
+				if (index > 0 && combineTashkeel) {
 					if (tashkeelLocation [index - 1].tashkeel == (char)0x0651) { // SHADDA
 						tashkeelLocation [index - 1].tashkeel = (char)0xFC61; // Shadda With DAMMA
 						continue;
@@ -381,8 +423,9 @@ internal class ArabicFixerTool
 				}
 				tashkeelLocation.Add (new TashkeelLocation ((char)0x064F, i));
 				index++;
-			} else if (letters [i] == (char)0x0650) { // KASRA
-				if (index > 0) {
+			}
+            else if (letters [i] == (char)0x0650) { // KASRA
+				if (index > 0 && combineTashkeel) {
 					if (tashkeelLocation [index - 1].tashkeel == (char)0x0651) { // SHADDA
 						tashkeelLocation [index - 1].tashkeel = (char)0xFC62; // Shadda With KASRA
 						continue;
@@ -390,8 +433,9 @@ internal class ArabicFixerTool
 				}
 				tashkeelLocation.Add (new TashkeelLocation ((char)0x0650, i));
 				index++;
-			} else if (letters [i] == (char)0x0651) { // SHADDA
-				if(index > 0)
+			}
+            else if (letters [i] == (char)0x0651) { // SHADDA
+				if(index > 0 && combineTashkeel)
 				{
 					if(tashkeelLocation[index-1].tashkeel == (char)0x064E ) // FATHA
 					{
@@ -414,10 +458,12 @@ internal class ArabicFixerTool
 
 				tashkeelLocation.Add (new TashkeelLocation ((char)0x0651, i));
 				index++;
-			} else if (letters [i] == (char)0x0652) { // SUKUN
+			}
+            else if (letters [i] == (char)0x0652) { // SUKUN
 				tashkeelLocation.Add (new TashkeelLocation ((char)0x0652, i));
 				index++;
-			} else if (letters [i] == (char)0x0653) { // MADDAH ABOVE
+			}
+            else if (letters [i] == (char)0x0653) { // MADDAH ABOVE
 				tashkeelLocation.Add (new TashkeelLocation ((char)0x0653, i));
 				index++;
 			}
