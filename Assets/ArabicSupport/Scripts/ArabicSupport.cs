@@ -199,7 +199,8 @@ internal enum IsolatedArabicLetters
 	PersianChe = 0xFB7A,
 	PersianZe = 0xFB8A,
 	PersianGaf = 0xFB92,
-	PersianGaf2 = 0xFB8E
+	PersianGaf2 = 0xFB8E,
+	PersianYeh = 0xFBFC,
 	
 }
 
@@ -248,7 +249,8 @@ internal enum GeneralArabicLetters
 	PersianChe = 0x0686,
 	PersianZe = 0x0698,
 	PersianGaf = 0x06AF,
-	PersianGaf2 = 0x06A9
+	PersianGaf2 = 0x06A9,
+	PersianYeh = 0x06CC,
 	
 }
 
@@ -325,6 +327,7 @@ internal class ArabicTable
 		mapList.Add(new ArabicMapping((int)GeneralArabicLetters.PersianZe, (int)IsolatedArabicLetters.PersianZe));
 		mapList.Add(new ArabicMapping((int)GeneralArabicLetters.PersianGaf, (int)IsolatedArabicLetters.PersianGaf));
 		mapList.Add(new ArabicMapping((int)GeneralArabicLetters.PersianGaf2, (int)IsolatedArabicLetters.PersianGaf2));
+		mapList.Add(new ArabicMapping((int)GeneralArabicLetters.PersianYeh, (int)IsolatedArabicLetters.PersianYeh));
 		
 		
 		
