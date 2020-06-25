@@ -706,7 +706,7 @@ internal class ArabicFixerTool
 						list.Add(numberList[numberList.Count - 1 - j]);
 					numberList.Clear();
 				}
-				if (lettersFinal[i] != 0xFFFF)
+				if (lettersFinal[i] != 0xFFFF && lettersFinal[i] != '\0')
 					list.Add(lettersFinal[i]);
 				
 			}
@@ -811,7 +811,9 @@ internal class ArabicFixerTool
 				&& letters[index] != (int)IsolatedArabicLetters.Hamza;
 
 		bool lettersThatCannotBeAfterLeadingLetter = index < letters.Length - 1 
-			&& letters[index + 1] != ' '
+				&& letters[index + 1] != ' '
+				&& letters[index + 1] != '\n'
+				&& letters[index + 1] != '\r'
 				&& !char.IsPunctuation(letters[index + 1] )
 				&& !char.IsNumber(letters[index + 1])
 				&& !char.IsSymbol(letters[index + 1])
