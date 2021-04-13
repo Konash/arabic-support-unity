@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using ArabicSupport;
 
@@ -12,9 +13,9 @@ public class SetArabicText : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		gameObject.GetComponent<GUIText>().text = ArabicFixer.Fix(text);
+		gameObject.GetComponent<Text>().text = ArabicFixer.Fix(text);
 		//gameObject.guiText.fontSize = 60;
-		Debug.Log(ArabicSupport.ArabicFixer.Fix("نص عربي على يونيتي، أهلا وسهلا", ShowTashkeel, UseHinduNumbers));
+		Debug.Log(ArabicFixer.Fix("نص عربي على يونيتي، أهلا وسهلا", ShowTashkeel, UseHinduNumbers));
 
 	}
 
