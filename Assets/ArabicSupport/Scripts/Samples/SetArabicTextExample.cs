@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using ArabicSupport;
 
@@ -12,7 +13,7 @@ public class SetArabicTextExample : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		gameObject.GetComponent<GUIText>().text = "This sentence (wrong display):\n" + text +
+		gameObject.GetComponent<Text>().text = "This sentence (wrong display):\n" + text +
 			"\n\nWill appear correctly as:\n" + ArabicFixer.Fix(text, ShowTashkeel, UseHinduNumbers);
 	}
 
