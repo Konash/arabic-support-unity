@@ -1,7 +1,7 @@
 # Arabic Letters Support For Unity
 This plugin allows you to use accurate and correct Arabic text in your game or 3D application. Supports Tashkeel and Hindu numbers. Supports 4 Persian Characters.
 
-You can find it in the Unity Asset Store here: https://www.assetstore.unity3d.com/en/#!/content/2674
+You can find it in the Unity Asset Store here: https://assetstore.unity.com/packages/tools/gui/2674 
 
 Also, check out [UPersian](https://github.com/ElectroGryphon/EGGA/tree/master/UPersian). It uses this plugin to create these GUI items: 
 1. RTL Text 
